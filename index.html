@@ -9,28 +9,31 @@
     <link rel="icon" href="./imagen/favicon.jfif" type="image/png" />
  </head>
 <body>
- <div class="header">
-   <h1>Juegos de Impro</h1></a>
+  <!-- HEADER corregido: quitar </a> sobrante -->
+  <div class="header">
+    <h1>Juegos de Impro</h1>
   </div>
- <!-- NUEVO CUADRO DE SUBTÍTULO -->
-    <div class="page-subtitle">
-        <p>¿No sabes a qué jugar? <br> Aquí tienes un arsenal del que elegir.</p>
-    </div>
-    <div id="generator-container">
-        <div id="selection-header">
-            <h2>Juegos y/o Estilos seleccionados:</h2>
-            <div id="selected-traits"></div>
-            <button id="clear-all" title="Limpiar selección">🗑️</button>
-        </div>
 
-        <div class="grid-container">
-            <!-- Columna 1 -->
-            <div class="grid-item">
-                <h3>JUEGOS</h3>
-                <div class="controls">
-                    <select id="linguistic">
-                        <option value="">Seleccionar...</option>
-          
+  <!-- SUBTÍTULO -->
+  <div class="page-subtitle">
+    <p>¿No sabes a qué jugar? <br> Aquí tienes un arsenal del que elegir.</p>
+  </div>
+
+  <!-- GENERADOR -->
+  <div id="generator-container">
+    <div id="selection-header">
+      <h2>Juegos y/o Estilos seleccionados:</h2>
+      <div id="selected-traits">Ninguna selección</div>
+      <button id="clear-all" title="Limpiar selección">🗑️</button>
+    </div>
+
+    <div class="grid-container">
+      <!-- Columna 1: JUEGOS -->
+      <div class="grid-item">
+        <h3>JUEGOS</h3>
+        <div class="controls">
+          <select id="linguistic">
+            <option value="">Seleccionar...</option>
             <option>Posturas</option>
             <option>Bisagra</option>
             <option>Tostadora</option>
@@ -49,31 +52,32 @@
             <option>Fotografía/Objetos</option>
             <option>Contrarreloj</option>
             <option>Nº limitado de palabras</option>
-                 
-                    </select>
-                    <div class="buttons">
-                        <button class="random-btn">🎲</button>
-                        <button class="clear-btn">🗑️</button>
-                    </div>
-                </div>
-            </div>
-            
- <div class="grid-item">
-                <h3>ESTILOS</h3>
-                <div class="controls">
-                    <select id="style">
-                       <option value="">Seleccionar...</option>
-                        <option>Anime</option>
+          </select>
+          <div class="buttons">
+            <button class="random-btn" type="button">🎲</button>
+            <button class="clear-btn" type="button">🗑️</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2: ESTILOS -->
+      <div class="grid-item">
+        <h3>ESTILOS</h3>
+        <div class="controls">
+          <select id="style">
+            <option value="">Seleccionar...</option>
+            <!-- Si quisieras agrupar en optgroup, abrir aquí <optgroup label="..."> y cerrarlo al final -->
+            <!-- Pero si no usas optgroup, NO pongas cierre </optgroup> -->
+            <option>Anime</option>
             <option>Bélico</option>
             <option>Bricomanía</option>
-            
             <option>Cine negro</option>
             <option>Comedia romántica</option>
-             <option>Disney</option>
+            <option>Disney</option>
             <option>Documental de animales</option>
             <option>Fantasía</option>
             <option>Infantil</option>
-           <option>Medieval</option>
+            <option>Medieval</option>
             <option>Quinqui</option>
             <option>Musical</option>
             <option>Película de Serie B</option>
@@ -82,22 +86,22 @@
             <option>Terror</option>
             <option>Thriller policíaco</option>
             <option>Western</option>
-            </optgroup>
-                               </select>
-                    <div class="buttons">
-                        <button class="random-btn">🎲</button>
-                        <button class="clear-btn">🗑️</button>
-                    </div>
-                </div>
-            </div>
- 
-                </div>
-            </div>
-      <div class="popup-overlay" id="glossary-overlay"></div>
-<div class="glossary-popup" id="glossary-popup">
+          </select>
+          <div class="buttons">
+            <button class="random-btn" type="button">🎲</button>
+            <button class="clear-btn" type="button">🗑️</button>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .grid-container -->
+  </div> <!-- #generator-container -->
+
+  <!-- POPUP de glosario -->
+  <div class="popup-overlay" id="glossary-overlay"></div>
+  <div class="glossary-popup" id="glossary-popup">
     <span class="popup-close" onclick="closeGlossaryPopup()">×</span>
     <div id="popup-content"></div>
-</div>
+  </div>
     <script>
         // Función para ordenar los elementos de un select
 function sortSelect(select) {
