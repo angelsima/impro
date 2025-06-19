@@ -102,200 +102,185 @@
     <span class="popup-close" onclick="closeGlossaryPopup()">×</span>
     <div id="popup-content"></div>
   </div>
-    <script>
-        // Función para ordenar los elementos de un select
-function sortSelect(select) {
-    const options = Array.from(select.options);
-    const placeholder = options.find(opt => opt.value === "");
-    const optgroups = Array.from(select.querySelectorAll('optgroup'));
-    
-    // Ordenar optgroups por etiqueta
-    const sortedOptgroups = optgroups.sort((a, b) => {
+   <script>
+    // (mantener tu JavaScript, pero asegúrate de que no haya errores por IDs faltantes o selects mal anidados)
+
+    // Función para ordenar los elementos de un select
+    function sortSelect(select) {
+      const options = Array.from(select.options);
+      const placeholder = options.find(opt => opt.value === "");
+      const optgroups = Array.from(select.querySelectorAll('optgroup'));
+
+      // Ordenar optgroups por etiqueta
+      const sortedOptgroups = optgroups.sort((a, b) => {
         return a.label.localeCompare(b.label);
-    });
-    
-    // Ordenar opciones dentro de cada optgroup
-    sortedOptgroups.forEach(optgroup => {
-        const options = Array.from(optgroup.children);
-        const sortedOptions = options.sort((a, b) => {
-            return a.text.localeCompare(b.text);
-        });
+      });
+
+      // Ordenar opciones dentro de cada optgroup
+      sortedOptgroups.forEach(optgroup => {
+        const opts = Array.from(optgroup.children);
+        const sortedOptions = opts.sort((a, b) => a.text.localeCompare(b.text));
         optgroup.innerHTML = '';
         sortedOptions.forEach(option => optgroup.appendChild(option));
-    });
-    
-    // Ordenar opciones sueltas (sin optgroup)
-    const looseOptions = options
-  .filter(opt => opt.parentElement.tagName !== 'OPTGROUP' && opt.value !== "")
-  .sort((a,b) => a.text.localeCompare(b.text));
-    
-    // Reconstruir el select
-    select.innerHTML = '';
-    if (placeholder) select.add(placeholder);
-    
-    // Agregar optgroups ordenados
-    sortedOptgroups.forEach(optgroup => select.appendChild(optgroup));
-    
-    // Agregar opciones sueltas ordenadas al final
-    looseOptions.forEach(option => select.add(option));
-}
+      });
 
-// Aplicar a todos los selects al cargar
-document.querySelectorAll('select').forEach(select => {
-    sortSelect(select);
-});
-        // Función actualizada para mostrar selecciones
-        function updateSelectedTraits() {
-            const selections = {};
-            const categories = ['linguistic', 'style', 'traits', 'poetry', 'proportion', 'retoric'];
-            
-            categories.forEach(category => {
-                const select = document.getElementById(category);
-                if(select.value) {
-                    selections[category] = select.value;
-                }
-            });
+      // Ordenar opciones sueltas (sin optgroup)
+      const looseOptions = options
+        .filter(opt => opt.parentElement.tagName !== 'OPTGROUP' && opt.value !== "")
+        .sort((a, b) => a.text.localeCompare(b.text));
 
-            let displayHTML = '';
-            Object.entries(selections).forEach(([cat, value]) => {
-                // Nombres legibles para las categorías
-                const categoryNames = {
-                    linguistic: 'JUEGOS LINGÜÍSTICOS',
-                    style: 'ESTILOS',
-                    traits: 'PERSONAJE-NARRADOR',
-                    poetry: 'FORMATO',
-                    proportion: 'CADENCIAS/PROPORCIONES',
-                    retoric: 'FIGURAS RETÓRICAS'
-                };
-               displayHTML += `<div class="selected-item" data-term="${value}">
-                    <span class="category">${categoryNames[cat]}:</span>
-                    <span class="value">${value}</span>
-                </div>`;
-            });
+      // Reconstruir el select
+      select.innerHTML = '';
+      if (placeholder) select.add(placeholder);
 
-            document.getElementById('selected-traits').innerHTML = displayHTML || 'Ninguna selección';
-       document.querySelectorAll('.selected-item').forEach(item => {
-        item.addEventListener('click', (e) => {
+      // Agregar optgroups ordenados
+      sortedOptgroups.forEach(optgroup => select.appendChild(optgroup));
+
+      // Agregar opciones sueltas ordenadas al final
+      looseOptions.forEach(option => select.add(option));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ordenar todos los selects
+      document.querySelectorAll('select').forEach(select => {
+        sortSelect(select);
+      });
+
+      // Función para mostrar selecciones
+      function updateSelectedTraits() {
+        const selections = {};
+        const categories = ['linguistic', 'style', 'traits', 'poetry', 'proportion', 'retoric'];
+
+        categories.forEach(category => {
+          const selectEl = document.getElementById(category);
+          if (selectEl && selectEl.value) {
+            selections[category] = selectEl.value;
+          }
+        });
+
+        let displayHTML = '';
+        const categoryNames = {
+          linguistic: 'JUEGOS LINGÜÍSTICOS',
+          style: 'ESTILOS',
+          traits: 'PERSONAJE-NARRADOR',
+          poetry: 'FORMATO',
+          proportion: 'CADENCIAS/PROPORCIONES',
+          retoric: 'FIGURAS RETÓRICAS'
+        };
+        Object.entries(selections).forEach(([cat, value]) => {
+          displayHTML += `<div class="selected-item" data-term="${value}">
+              <span class="category">${categoryNames[cat]}:</span>
+              <span class="value">${value}</span>
+          </div>`;
+        });
+        const container = document.getElementById('selected-traits');
+        if (displayHTML) {
+          container.innerHTML = displayHTML;
+        } else {
+          container.textContent = 'Ninguna selección';
+        }
+        // Añadir listener para cada .selected-item
+        document.querySelectorAll('.selected-item').forEach(item => {
+          item.addEventListener('click', () => {
             const term = item.dataset.term;
             showGlossaryPopup(term);
+          });
         });
-    });
+      }
+
+      // Funciones random y clear para un select dado
+      function randomSelection(selectId) {
+        const select = document.getElementById(selectId);
+        if (!select) return;
+        const options = select.querySelectorAll('option:not([value=""])');
+        if (options.length > 0) {
+          const randomIndex = Math.floor(Math.random() * options.length);
+          select.selectedIndex = randomIndex + 1;
+          updateSelectedTraits();
         }
+      }
+      function clearSelection(selectId) {
+        const select = document.getElementById(selectId);
+        if (!select) return;
+        select.selectedIndex = 0;
+        updateSelectedTraits();
+      }
 
-        // Función para selección aleatoria
-        function randomSelection(selectId) {
-            const select = document.getElementById(selectId);
-            const options = select.querySelectorAll('option:not([value=""])');
-            if(options.length > 0) {
-                const randomIndex = Math.floor(Math.random() * options.length);
-                select.selectedIndex = randomIndex + 1;
-                updateSelectedTraits();
-            }
+      // Event listeners de botones
+      document.querySelectorAll('.random-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const selectEl = e.target.closest('.grid-item').querySelector('select');
+          if (selectEl) randomSelection(selectEl.id);
+        });
+      });
+      document.querySelectorAll('.clear-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const selectEl = e.target.closest('.grid-item').querySelector('select');
+          if (selectEl) clearSelection(selectEl.id);
+        });
+      });
+      document.getElementById('clear-all').addEventListener('click', () => {
+        document.querySelectorAll('select').forEach(select => {
+          select.selectedIndex = 0;
+        });
+        updateSelectedTraits();
+      });
+      // Listeners de cambio en selects
+      document.querySelectorAll('select').forEach(select => {
+        select.addEventListener('change', updateSelectedTraits);
+      });
+
+      // Mostrar nav-link activo si existiera navegación (opcional)
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const linkPage = link.getAttribute('href')?.split('/').pop();
+        if (linkPage && currentPage === linkPage) {
+          link.classList.add('activo');
         }
+      });
 
-        // Función para limpiar selección
-        function clearSelection(selectId) {
-            const select = document.getElementById(selectId);
-            select.selectedIndex = 0;
-            updateSelectedTraits();
+      // Carga del glosario
+      let glossaryData = [];
+      async function loadGlossaryData() {
+        try {
+          const response = await fetch('./glosario/glosario-manifest.json');
+          glossaryData = await response.json();
+        } catch (error) {
+          console.error('Error cargando el glosario:', error);
         }
-        let glossaryData = [];
-
-// Cargar datos del glosario
-async function loadGlossaryData() {
-    try {
-        const response = await fetch('./glosario/glosario-manifest.json');
-        glossaryData = await response.json();
-    } catch (error) {
-        console.error('Error cargando el glosario:', error);
-    }
-}
-
-// Mostrar popup
-async function showGlossaryPopup(termName) {
-    const term = glossaryData.find(t => t.term === termName);
-    if (!term) return;
-
-    const popup = document.getElementById('glossary-popup');
-    const overlay = document.getElementById('glossary-overlay');
-    const title = document.getElementById('popup-title');
-    const content = document.getElementById('popup-content');
-
-   try {
-        // Cargar el HTML específico del término
-        const response = await fetch(`./glosario/${term.id}.html`);
-        const htmlContent = await response.text();
-        content.innerHTML = htmlContent;
-    } catch (error) {
-        // Fallback a datos del manifest si hay error
-        console.error('Error cargando el término:', error);
-        content.innerHTML = `
+      }
+      async function showGlossaryPopup(termName) {
+        const term = glossaryData.find(t => t.term === termName);
+        if (!term) return;
+        const popup = document.getElementById('glossary-popup');
+        const overlay = document.getElementById('glossary-overlay');
+        const content = document.getElementById('popup-content');
+        try {
+          const resp = await fetch(`./glosario/${term.id}.html`);
+          const htmlContent = await resp.text();
+          content.innerHTML = htmlContent;
+        } catch (err) {
+          console.error('Error cargando el término:', err);
+          content.innerHTML = `
             <p><strong>Definición:</strong> ${term.shortDef}</p>
             ${term.longDef ? `<p>${term.longDef}</p>` : ''}
             ${term.examples ? `<p><strong>Ejemplos:</strong> ${term.examples.join(', ')}</p>` : ''}
-        `;
-    }
-
-    popup.classList.add('active');
-    overlay.classList.add('active');
-}
-
-// Cerrar popup
-function closeGlossaryPopup() {
-    document.getElementById('glossary-popup').classList.remove('active');
-    document.getElementById('glossary-overlay').classList.remove('active');
-}
-// Al final de tu script actual, antes de los event listeners
-document.querySelectorAll('select').forEach(select => {
-    sortSelect(select);
-});
-        // Event listeners
-        document.querySelectorAll('.random-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const selectId = e.target.closest('.grid-item').querySelector('select').id;
-                randomSelection(selectId);
-            });
-        });
-
-        document.querySelectorAll('.clear-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const selectId = e.target.closest('.grid-item').querySelector('select').id;
-                clearSelection(selectId);
-            });
-        });
-
-        document.getElementById('clear-all').addEventListener('click', () => {
-            document.querySelectorAll('select').forEach(select => {
-                select.selectedIndex = 0;
-            });
-            updateSelectedTraits();
-        });
-        
-
-
-        // Inicialización
-        document.querySelectorAll('select').forEach(select => {
-            select.addEventListener('change', updateSelectedTraits);
-        });
-        updateSelectedTraits();
-        document.addEventListener('DOMContentLoaded', () => {
-    const currentPage = window.location.pathname.split('/').pop();
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href').split('/').pop();
-        if (currentPage === linkPage) {
-            link.classList.add('activo');
+          `;
         }
+        popup.classList.add('active');
+        overlay.classList.add('active');
+      }
+      function closeGlossaryPopup() {
+        document.getElementById('glossary-popup').classList.remove('active');
+        document.getElementById('glossary-overlay').classList.remove('active');
+      }
+      document.getElementById('glossary-overlay').addEventListener('click', closeGlossaryPopup);
+      // Inicializar glosario
+      loadGlossaryData();
+
+      // Llamada inicial para mostrar “Ninguna selección”
+      updateSelectedTraits();
     });
-});
-        // Inicializar carga del glosario
-document.addEventListener('DOMContentLoaded', () => {
-    loadGlossaryData();
-    
-    // Cerrar popup al hacer clic fuera
-    document.getElementById('glossary-overlay').addEventListener('click', closeGlossaryPopup);
-});
-    </script>
+  </script>
 </body>
 </html>
