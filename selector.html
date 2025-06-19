@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/styles.css">
+    <title>Selector de Restricciones Narrativas</title>
+    <link rel="icon" href="./imagen/favicon.jfif" type="image/png" />
+ </head>
+<body>
+ <div class="header">
+   <div class="logo-title">
+    <a href="./blog.html"> <img src="./imagen/logo.jfif" alt="Logo" class="logo-img"></a>
+    <a href="./blog.html"><h1>Tantoshigostanto</h1></a>
+        </div>
+    <div class="nav-container">
+    <nav class="nav-menu">
+     <a href="/tantoshigostanto/blog.html" class="nav-link">Textos</a>
+      <!-- Línea vertical -->
+            <div class="nav-divider"></div>
+          <a href="/tantoshigostanto/glosario.html" class="nav-link">Glosario</a>
+          <a href="/tantoshigostanto/generador.html" class="nav-link">Selector</a>
+             <!-- Línea vertical -->
+            <div class="nav-divider"></div>
+             <a href="/tantoshigostanto/index.html" class="nav-link">?</a>
+    </nav>
+  </div>
+  </div>
+ <!-- NUEVO CUADRO DE SUBTÍTULO -->
+    <div class="page-subtitle">
+        <p>¿Quieres crear algo? <br> Aquí tienes un arsenal del que elegir.</p>
+    </div>
+    <div id="generator-container">
+        <div id="selection-header">
+            <h2>Estilos o normas seleccionadas:</h2>
+            <div id="selected-traits"></div>
+            <button id="clear-all" title="Limpiar selección">🗑️</button>
+        </div>
+
+        <div class="grid-container">
+            <!-- Columna 1 -->
+            <div class="grid-item">
+                <h3>JUEGOS LINGÜÍSTICOS</h3>
+                <div class="controls">
+                    <select id="linguistic">
+                        <option value="">Seleccionar...</option>
+           <optgroup label="Lipogramas">
+            <option>Lipograma sin A</option>
+            <option>Lipograma sin E</option>
+            <option>Lipograma sin I</option>
+            <option>Lipograma sin O</option>
+            <option>Lipograma sin U</option>
+            </optgroup>
+            <option>Onomatopeyas</option>
+            <option>Sílaba encadenada</option>
+            <option>Solo sintagmas nominales</option>
+            <option>Solo infinitivos</option>
+            <option>Glíglico (jitanjáforas)</option>
+            <option>Español en alfabeto griego</option>
+            <option>Español en sintaxis inglesa</option>
+            <optgroup label="Fonéticas">
+            <option>Aspersor malaguita</option>
+            <option>Jadeo canario</option>
+            </optgroup>           
+                    </select>
+                    <div class="buttons">
+                        <button class="random-btn">🎲</button>
+                        <button class="clear-btn">🗑️</button>
+                    </div>
+                </div>
+            </div>
+            
+ <div class="grid-item">
+                <h3>ESTILOS</h3>
+                <div class="controls">
+                    <select id="style">
+                       <option value="">Seleccionar...</option>
+            <optgroup label="Autores/Corrientes">
+            <option>Edgar Allan Poe</option>
+            <option>Realismo mágico</option>    
+            </optgroup>
+            <optgroup label="Estilo">
+            <option>Anime</option>
+            <option>Bélico</option>
+            <option>Bricomanía</option>
+            <option>Catequesis</option>
+            <option>Cine negro</option>
+            <option>Comedia romántica</option>
+            <option>Documental de animales</option>
+            <option>Fantasía</option>
+            <option>Infantil</option>
+            <option>Inventario científico</option>
+            <option>Medieval</option>
+            <option>Procedimiento administrativo</option>
+            <option>Quinqui</option>
+            <option>Sampleo</option>
+            <option>Serie B</option>
+            <option>Telenovela</option>
+            <option>Terror</option>
+            <option>Thriller policíaco</option>
+            <option>Western</option>
+            </optgroup>
+                               </select>
+                    <div class="buttons">
+                        <button class="random-btn">🎲</button>
+                        <button class="clear-btn">🗑️</button>
+                    </div>
+                </div>
+            </div>
+
+ <div class="grid-item">
+                <h3>PERSONAJE-NARRADOR</h3>
+                <div class="controls">
+                    <select id="traits">
+                       <option value="">Seleccionar...</option>
+            <option>Llados</option>
+            <option>Afasia</option> 
+            <option>Calé</option> 
+            <option>Descompuesto</option>
+            <option>Disléxico</option>
+            <option>Espanglish</option>
+            <option>Impreciso</option>
+            <option>Llanito</option>
+            <option>Manifiesto</option>
+            <option>Numerófilo</option>
+            <option>Pasivo-agresivo</option>
+            <option>Perfeccionista</option>
+            <option>Transicionario</option>
+            <option>Trendy</option>
+            <option>Verborrea</option>
+            <option>Whatsapp Simón</option>
+                    </select>
+                    <div class="buttons">
+                        <button class="random-btn">🎲</button>
+                        <button class="clear-btn">🗑️</button>
+                    </div>
+                </div>
+            </div>
+
+  <div class="grid-item">
+                <h3>FORMATO</h3>
+                <div class="controls">
+                    <select id="poetry">
+                        <option value="">Seleccionar...</option>
+            <option>Microrrelato</option>
+              <option>Aforismo</option>
+                         <optgroup label="Estructura Narrativa">
+            <option>Rebobinado</option>    
+            </optgroup>
+             <optgroup label="Interactivo">
+            <option>Elige tu propia aventura</option>   
+            <option>Escape Room</option>  
+            </optgroup>
+            <optgroup label="Poesía">
+            <option>Mester de Clerecía</option>
+            <option>Mester de Juglaría</option>
+            <option>Soneto</option>
+            <option>Haiku</option>
+            <option>Verso libre</option>
+            </optgroup>
+                    </select>
+                    <div class="buttons">
+                        <button class="random-btn">🎲</button>
+                        <button class="clear-btn">🗑️</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-item">
+                <h3>CADENCIAS/PROPORCIONES</h3>
+                <div class="controls">
+                    <select id="proportion">
+                        <option value="">Seleccionar...</option>
+            <option>Número Áureo</option>
+            <option>Número Pi</option>
+            <option>Compás por Soleá</option>
+                    </select>
+                    <div class="buttons">
+                        <button class="random-btn">🎲</button>
+                        <button class="clear-btn">🗑️</button>
+                    </div>
+                </div>
+            </div>
+
+        
+            <div class="grid-item">
+                <h3>FIGURAS RETÓRICAS</h3>
+                <div class="controls">
+                    <select id="retoric">
+                       <option value="">Seleccionar...</option>
+                <optgroup label="Fonéticas">
+                    <option>Aliteración</option>
+            </optgroup>
+                <optgroup label="Gramáticas">
+                    <option>Polisíndeton</option>
+            </optgroup>
+                <optgroup label="Semánticas">
+                    <option>Hipérbole</option>
+            </optgroup>
+                    </select>
+                    <div class="buttons">
+                        <button class="random-btn">🎲</button>
+                        <button class="clear-btn">🗑️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="popup-overlay" id="glossary-overlay"></div>
+<div class="glossary-popup" id="glossary-popup">
+    <span class="popup-close" onclick="closeGlossaryPopup()">×</span>
+    <div id="popup-content"></div>
+</div>
+    <script>
+        // Función para ordenar los elementos de un select
+function sortSelect(select) {
+    const options = Array.from(select.options);
+    const placeholder = options.find(opt => opt.value === "");
+    const optgroups = Array.from(select.querySelectorAll('optgroup'));
+    
+    // Ordenar optgroups por etiqueta
+    const sortedOptgroups = optgroups.sort((a, b) => {
+        return a.label.localeCompare(b.label);
+    });
+    
+    // Ordenar opciones dentro de cada optgroup
+    sortedOptgroups.forEach(optgroup => {
+        const options = Array.from(optgroup.children);
+        const sortedOptions = options.sort((a, b) => {
+            return a.text.localeCompare(b.text);
+        });
+        optgroup.innerHTML = '';
+        sortedOptions.forEach(option => optgroup.appendChild(option));
+    });
+    
+    // Ordenar opciones sueltas (sin optgroup)
+    const looseOptions = options
+  .filter(opt => opt.parentElement.tagName !== 'OPTGROUP' && opt.value !== "")
+  .sort((a,b) => a.text.localeCompare(b.text));
+    
+    // Reconstruir el select
+    select.innerHTML = '';
+    if (placeholder) select.add(placeholder);
+    
+    // Agregar optgroups ordenados
+    sortedOptgroups.forEach(optgroup => select.appendChild(optgroup));
+    
+    // Agregar opciones sueltas ordenadas al final
+    looseOptions.forEach(option => select.add(option));
+}
+
+// Aplicar a todos los selects al cargar
+document.querySelectorAll('select').forEach(select => {
+    sortSelect(select);
+});
+        // Función actualizada para mostrar selecciones
+        function updateSelectedTraits() {
+            const selections = {};
+            const categories = ['linguistic', 'style', 'traits', 'poetry', 'proportion', 'retoric'];
+            
+            categories.forEach(category => {
+                const select = document.getElementById(category);
+                if(select.value) {
+                    selections[category] = select.value;
+                }
+            });
+
+            let displayHTML = '';
+            Object.entries(selections).forEach(([cat, value]) => {
+                // Nombres legibles para las categorías
+                const categoryNames = {
+                    linguistic: 'JUEGOS LINGÜÍSTICOS',
+                    style: 'ESTILOS',
+                    traits: 'PERSONAJE-NARRADOR',
+                    poetry: 'FORMATO',
+                    proportion: 'CADENCIAS/PROPORCIONES',
+                    retoric: 'FIGURAS RETÓRICAS'
+                };
+               displayHTML += `<div class="selected-item" data-term="${value}">
+                    <span class="category">${categoryNames[cat]}:</span>
+                    <span class="value">${value}</span>
+                </div>`;
+            });
+
+            document.getElementById('selected-traits').innerHTML = displayHTML || 'Ninguna selección';
+       document.querySelectorAll('.selected-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            const term = item.dataset.term;
+            showGlossaryPopup(term);
+        });
+    });
+        }
+
+        // Función para selección aleatoria
+        function randomSelection(selectId) {
+            const select = document.getElementById(selectId);
+            const options = select.querySelectorAll('option:not([value=""])');
+            if(options.length > 0) {
+                const randomIndex = Math.floor(Math.random() * options.length);
+                select.selectedIndex = randomIndex + 1;
+                updateSelectedTraits();
+            }
+        }
+
+        // Función para limpiar selección
+        function clearSelection(selectId) {
+            const select = document.getElementById(selectId);
+            select.selectedIndex = 0;
+            updateSelectedTraits();
+        }
+        let glossaryData = [];
+
+// Cargar datos del glosario
+async function loadGlossaryData() {
+    try {
+        const response = await fetch('./glosario/glosario-manifest.json');
+        glossaryData = await response.json();
+    } catch (error) {
+        console.error('Error cargando el glosario:', error);
+    }
+}
+
+// Mostrar popup
+async function showGlossaryPopup(termName) {
+    const term = glossaryData.find(t => t.term === termName);
+    if (!term) return;
+
+    const popup = document.getElementById('glossary-popup');
+    const overlay = document.getElementById('glossary-overlay');
+    const title = document.getElementById('popup-title');
+    const content = document.getElementById('popup-content');
+
+   try {
+        // Cargar el HTML específico del término
+        const response = await fetch(`./glosario/${term.id}.html`);
+        const htmlContent = await response.text();
+        content.innerHTML = htmlContent;
+    } catch (error) {
+        // Fallback a datos del manifest si hay error
+        console.error('Error cargando el término:', error);
+        content.innerHTML = `
+            <p><strong>Definición:</strong> ${term.shortDef}</p>
+            ${term.longDef ? `<p>${term.longDef}</p>` : ''}
+            ${term.examples ? `<p><strong>Ejemplos:</strong> ${term.examples.join(', ')}</p>` : ''}
+        `;
+    }
+
+    popup.classList.add('active');
+    overlay.classList.add('active');
+}
+
+// Cerrar popup
+function closeGlossaryPopup() {
+    document.getElementById('glossary-popup').classList.remove('active');
+    document.getElementById('glossary-overlay').classList.remove('active');
+}
+// Al final de tu script actual, antes de los event listeners
+document.querySelectorAll('select').forEach(select => {
+    sortSelect(select);
+});
+        // Event listeners
+        document.querySelectorAll('.random-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const selectId = e.target.closest('.grid-item').querySelector('select').id;
+                randomSelection(selectId);
+            });
+        });
+
+        document.querySelectorAll('.clear-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const selectId = e.target.closest('.grid-item').querySelector('select').id;
+                clearSelection(selectId);
+            });
+        });
+
+        document.getElementById('clear-all').addEventListener('click', () => {
+            document.querySelectorAll('select').forEach(select => {
+                select.selectedIndex = 0;
+            });
+            updateSelectedTraits();
+        });
+        
+
+
+        // Inicialización
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', updateSelectedTraits);
+        });
+        updateSelectedTraits();
+        document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (currentPage === linkPage) {
+            link.classList.add('activo');
+        }
+    });
+});
+        // Inicializar carga del glosario
+document.addEventListener('DOMContentLoaded', () => {
+    loadGlossaryData();
+    
+    // Cerrar popup al hacer clic fuera
+    document.getElementById('glossary-overlay').addEventListener('click', closeGlossaryPopup);
+});
+    </script>
+</body>
+</html>
